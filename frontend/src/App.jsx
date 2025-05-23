@@ -1,15 +1,10 @@
 import React, { useState } from "react";
 
-const SITES = [
-  { name: "Livescore", value: "livescore" },
-  { name: "ESPN", value: "espn" },
-  { name: "BBC Sport", value: "bbc" },
-  { name: "Sofascore", value: "sofascore" },
-  { name: "Flashscore", value: "flashscore" },
-];
+// No more SITES array, as only football-data.org is used
 
 export default function App() {
-  const [site, setSite] = useState(SITES[0].value);
+  // Site is fixed to "football-data"
+  const site = "football-data";
   const [league, setLeague] = useState('');
   const [team, setTeam] = useState('');
   const [date, setDate] = useState('');
@@ -33,14 +28,10 @@ export default function App() {
     <div style={{ maxWidth: 600, margin: "2rem auto", padding: 24, background: "#f7f9fa", borderRadius: 12 }}>
       <h2>⚽ Sophisticated Soccer Prediction App</h2>
       <div style={{ marginBottom: 12 }}>
-        <label>
-          Select Source Site:&nbsp;
-          <select value={site} onChange={e => setSite(e.target.value)}>
-            {SITES.map(s => (
-              <option key={s.value} value={s.value}>{s.name}</option>
-            ))}
-          </select>
-        </label>
+        {/* Only label, no dropdown */}
+        <div>
+          Source Site: <b>football-data.org</b>
+        </div>
         <button onClick={fetchMatches} style={{ marginLeft: 12 }}>
           Fetch & Predict
         </button>
