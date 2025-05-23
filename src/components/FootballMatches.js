@@ -1,12 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const SOURCE_OPTIONS = [
-  { value: "football-data", label: "football-data.org" },
-  // Add others if you want: { value: "sofascore", label: "Sofascore" }
-];
-
-const FootballMatches = () => {
-  const [site, setSite] = useState("football-data");
+const FootballMatches = ({ site }) => {
   const [matches, setMatches] = useState([]);
   const [error, setError] = useState(null);
 
@@ -30,14 +24,6 @@ const FootballMatches = () => {
   return (
     <div>
       <h2>Football Matches</h2>
-      <label>
-        Select Source Site:{" "}
-        <select value={site} onChange={e => setSite(e.target.value)}>
-          {SOURCE_OPTIONS.map(opt => (
-            <option key={opt.value} value={opt.value}>{opt.label}</option>
-          ))}
-        </select>
-      </label>
       {error && <div style={{ color: "red" }}>Error: {error}</div>}
       <ul>
         {matches.length === 0 && !error && <li>No matches found.</li>}
