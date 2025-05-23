@@ -6,7 +6,7 @@ const PORT = 4000;
 app.use(cors());
 app.use(express.json());
 
-// Dynamic route to match your frontend
+// This dynamic route matches /api/matches/sofascore
 app.get('/api/matches/:site', (req, res) => {
   const { site } = req.params;
   const { league, team, date } = req.query;
@@ -28,5 +28,5 @@ app.get('/api/matches/:site', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`Backend running on port ${PORT}`);
 });
