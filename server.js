@@ -120,9 +120,11 @@ app.get('/api/predict/today', async (req, res) => {
     for (const scrape of sites) {
       try {
         const matches = await scrape();
+        // Debug: log what each scraper returns and their date fields
+        console.log(`From ${scrape.name}:`, matches.map(m => ({ home: m.home, away: m.away, date: m.date })));
         allMatches = allMatches.concat(matches.filter(isToday));
       } catch (e) {
-        // Continue if one site fails
+        console.error(`Error in ${scrape.name}:`, e);
         continue;
       }
     }
