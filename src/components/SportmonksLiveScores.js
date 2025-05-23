@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 
 // Set your Sportmonks API key in the environment or directly here
-const SPORTMONKS_API_KEY = process.env.REACT_APP_SPORTMONKS_API_KEY || "YOUR_API_KEY_HERE";
+const SPORTMONKS_API_KEY = process.env.REACT_APP_SPORTMONKS_API_KEY || "nEeNZRzr6RSee9mHnusVkGouXLwoyVZNDn62yA1C1O8Vv3KbzxzJjgFl6E67
+";
 
 // Football live scores endpoint
-const API_URL = `https://api.sportmonks.com/v3/football/livescores?api_token=${SPORTMONKS_API_KEY}`;
+const API_URL = `https://api.sportmonks.com/v3/football/livescores?api_token=${nEeNZRzr6RSee9mHnusVkGouXLwoyVZNDn62yA1C1O8Vv3KbzxzJjgFl6E67
+}`;
 
 export default function SportmonksLiveScores() {
   const [scores, setScores] = useState([]);
