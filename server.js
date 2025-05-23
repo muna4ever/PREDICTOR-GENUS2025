@@ -8,20 +8,26 @@ const PORT = 4000;
 app.use(cors());
 app.use(express.json());
 
-app.get('/api/matches/football-data', async (req, res) => {
-  try {
-    const response = await fetch('https://api.football-data.org/v4/matches', {
-      headers: { 'X-Auth-Token': process.env.a99f297052584b1f85b4a62734cbd330 }
-    });
-
-    if (!response.ok) {
-      return res.status(response.status).json({ error: 'Failed to fetch from football-data.org' });
+// Endpoint for fetching matches from football-data.org
+app.get('/api/matches/:site', async (req, res) => {
+  const { site } = req.params;
+  if (site === 'football-data') {
+    try {
+      const response = await fetch('https://api.football-data.org/v4/matches', {
+        headers: {
+          'X-Auth-Token': process.env.FOOTBALL_DATA_API_TOKEN
+        }
+      });
+      if (!response.ok) {
+        return res.status(response.status).json({ error: 'Failed to fetch from football-data.org' });
+      }
+      const data = await response.json();
+      res.json(data);
+    } catch (error) {
+      res.status(500).json({ error: 'Server error: ' + error.message });
     }
-
-    const data = await response.json();
-    res.json(data);
-  } catch (error) {
-    res.status(500).json({ error: 'Server error: ' + error.message });
+  } else {
+    res.json([]);
   }
 });
 
