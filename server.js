@@ -16,7 +16,7 @@ app.get('/api/matches/:site', async (req, res) => {
     try {
       const response = await fetch('https://api.football-data.org/v4/matches', {
         headers: {
-          'X-Auth-Token': process.env.FOOTBALL_DATA_API_TOKEN
+          'X-Auth-Token': process.env.a99f297052584b1f85b4a62734cbd330
         }
       });
       const data = await response.json();
